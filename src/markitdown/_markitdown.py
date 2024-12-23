@@ -1282,13 +1282,18 @@ class MarkItDown:
             - source: can be a string representing a path or url, or a requests.response object
             - extension: specifies the file extension to use when interpreting the file. If None, infer from source (path, uri, content-type, etc.)
         """
-        
+        # breakpoint()
         # Checking if the file exists or not
-        try:
-            with open(source, 'r'):
-                pass  # Just checking if the file can be opened; no need to read its contents.
-        except FileNotFoundError:
-            raise FileNotFoundError
+        # try:
+        #     with open(source, 'r'):
+        #         pass  # Just checking if the file can be opened; no need to read its contents.
+        # except FileNotFoundError:
+        #     raise FileNotFoundError
+
+        # breakpoint()
+        if not os.path.exists(source):
+            raise FileNotFoundError(f"File {source} does not exists. Please check.")
+
 
         # Local path or url
         if isinstance(source, str):
